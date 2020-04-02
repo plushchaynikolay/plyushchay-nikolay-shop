@@ -18,4 +18,9 @@ class MathTest {
     fun testMultiplication() {
         assert(2 * 3 == 6)
     }
+
+    @Test
+    fun testSubstraction() {
+        assert(3 - 2 == 1)
+    }
 }
