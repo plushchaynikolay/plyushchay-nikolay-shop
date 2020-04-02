@@ -13,4 +13,9 @@ class MathTest {
     fun testDivision() {
         assert(6 / 2 == 3)
     }
+
+    @Test
+    fun testMultiplication() {
+        assert(2 * 3 == 6)
+    }
 }
