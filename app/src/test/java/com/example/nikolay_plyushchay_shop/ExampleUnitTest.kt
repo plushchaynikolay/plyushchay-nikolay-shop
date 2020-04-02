@@ -29,6 +29,5 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         formatPrice(134.0, discount = 15)
-        println(result)
     }
 }

@@ -1,4 +1,11 @@
 package com.example.nikolay_plyushchay_shop
 
+import org.junit.Test
+import org.junit.Assert.*
+
 class MathTest {
+    @Test
+    fun testDivision() {
+        assert(6 / 2 == 3)
+    }
 }
