@@ -8,4 +8,9 @@ class MathTest {
     fun testIncrement() {
         assert(1 + 2 == 3)
     }
+
+    @Test
+    fun testDivision() {
+        assert(6 / 2 == 3)
+    }
 }
