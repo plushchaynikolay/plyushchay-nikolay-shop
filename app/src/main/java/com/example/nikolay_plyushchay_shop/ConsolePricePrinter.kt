@@ -11,7 +11,9 @@ class ConsolePricePrinter : PricePrinter {
     }
 
     private fun format(price: Double): String {
-        val digits: Int = if (price % 1 > 0) 2 else 0
-        return "%.${digits}f".format(price)
+        val roundedPrice = (100*price).roundToInt()/100.0
+        
+        val digits: Int = if (roundedPrice % 1 > 0) 2 else 0
+        return "%.${digits}f".format(roundedPrice)
     }
 }
