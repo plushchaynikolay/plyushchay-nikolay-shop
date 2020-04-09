@@ -1,7 +1,6 @@
 package com.example.nikolay_plyushchay_shop
 
 import org.junit.Test
-import org.junit.Assert.*
 
 class MathTest {
     @Test
@@ -20,7 +19,7 @@ class MathTest {
     }
 
     @Test
-    fun testSubstraction() {
+    fun testSubtraction() {
         assert(3 - 2 == 1)
     }
 }
