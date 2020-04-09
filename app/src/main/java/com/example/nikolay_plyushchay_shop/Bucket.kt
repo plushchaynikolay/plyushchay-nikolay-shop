@@ -11,9 +11,11 @@ class BucketPresenter(
     private val bucket: Bucket
 ) : Presenter {
     override fun print() {
+        var presentation = ""
         bucket.products.forEach { product ->
-            view.print("${product.name}: ${format(product.discountPrice)}")
+            presentation += "${product.name}: ${format(product.discountPrice)}\n"
         }
-        view.print(format(bucket.discountPrice))
+        presentation += format(bucket.discountPrice)
+        view.print(presentation)
     }
 }
