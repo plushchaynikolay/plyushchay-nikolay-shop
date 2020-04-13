@@ -12,8 +12,8 @@ class BucketPresenter(
 ) : Presenter {
     override fun print() {
         var presentation = ""
-        bucket.products.forEach { product ->
-            presentation += "${product.name}: ${format(product.discountPrice)}\n"
+        bucket.products.forEach { p ->
+            presentation += "${p.name}: ${format(p.price)}/${p.salePercent}% = ${format(p.discountPrice)}\n"
         }
         presentation += format(bucket.discountPrice)
         view.print(presentation)

@@ -2,8 +2,8 @@ package com.example.nikolay_plyushchay_shop
 
 class Product(
     val name: String,
-    private val price: Double,
-    private val salePercent: Int = 0
+    val price: Double,
+    val salePercent: Int = 0
 ) {
     init {
         if (price < 0.0) throw VerifyError("Price must be positive")
