@@ -1,8 +1,8 @@
 package com.example.nikolay_plyushchay_shop
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View {
     private val presenter: Presenter = BucketPresenter(
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), View {
     )
 
     override fun print(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+        textViewOrderInfo.text = msg
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
