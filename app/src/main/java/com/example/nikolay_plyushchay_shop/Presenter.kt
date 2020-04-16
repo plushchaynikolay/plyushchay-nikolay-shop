@@ -1,10 +1,10 @@
 package com.example.nikolay_plyushchay_shop
 
+import moxy.MvpPresenter
 import kotlin.math.round
 
-interface Presenter {
-    val view: View
-    fun print()
+abstract class Presenter : MvpPresenter<BaseView>(){
+    abstract fun print()
 }
 
 fun format(price: Double): String {

@@ -14,8 +14,7 @@ class Product(
 }
 
 class ProductPresenter(
-    override val view: View,
     val product: Product
-) : Presenter {
-    override fun print() = view.print(format(product.discountPrice))
+) : Presenter() {
+    override fun print() = viewState.print(format(product.discountPrice))
 }
