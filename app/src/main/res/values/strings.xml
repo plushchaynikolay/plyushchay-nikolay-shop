@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">М.М.М.</string>
+    <string name="app_name">МММ</string>
     <string name="header">Мой маленький магазинчик</string>
     <string name="nameFirstField">Имя</string>
     <string name="nameLastField">Фамилия</string>
     <string name="nameFatherField">Отчество</string>
     <string name="phoneField">Номер телефона</string>
+    <string name="hintPhoneNumber">Пример: 8(+7)9999999999</string>
     <string name="orderAcceptButton">Принять заказ</string>
     <string name="paymentGroup">Расчёт</string>
     <string name="paymentCard">Безналичный</string>
