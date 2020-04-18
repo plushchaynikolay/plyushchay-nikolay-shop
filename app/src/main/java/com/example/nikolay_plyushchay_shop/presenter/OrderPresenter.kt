@@ -1,21 +1,24 @@
-package com.example.nikolay_plyushchay_shop
+package com.example.nikolay_plyushchay_shop.presenter
 
-class Bucket(
-    val products: List<Product> = emptyList()
-) {
-    val discountPrice: Double = products.map { product -> product.discountPrice }.sum()
-}
+import com.example.nikolay_plyushchay_shop.model.Basket
+import com.example.nikolay_plyushchay_shop.model.OrderModel
 
-class BucketPresenter(
-    private val bucket: Bucket,
+class OrderPresenter(
+    private val basket: Basket,
     private val order: OrderModel
 ) : Presenter() {
     override fun print() {
         var presentation = ""
-        bucket.products.forEach { p ->
-            presentation += "${p.name}: ${format(p.price)}/${p.salePercent}% = ${format(p.discountPrice)}\n"
+        basket.products.forEach { p ->
+            presentation += "${p.name}: ${format(
+                p.price
+            )}/${p.salePercent}% = ${format(
+                p.discountPrice
+            )}\n"
         }
-        presentation += format(bucket.discountPrice)
+        presentation += format(
+            basket.discountPrice
+        )
         viewState.print(presentation)
     }
 
@@ -28,22 +31,22 @@ class BucketPresenter(
 
     fun setOrderLastName(s: String) {
         if (s.length > 2) {
-            order.firstName = s
+            order.lastName = s
             viewState.showErrorLastName(false)
         } else viewState.showErrorLastName(true)
     }
 
     fun setOrderFatherName(s: String) {
         if (s.length > 2) {
-            order.firstName = s
+            order.fatherName = s
             viewState.showErrorFatherName(false)
         } else viewState.showErrorFatherName(true)
     }
 
     fun setOrderPhoneNumber(s: String) {
         if (Regex("(\\+7|8)\\d{10}").matches(s)) {
-            order.firstName = s
-            viewState.showErrorPhoneNubmer(false)
-        } else viewState.showErrorPhoneNubmer(true)
+            order.phoneNumber = s
+            viewState.showErrorPhoneNumber(false)
+        } else viewState.showErrorPhoneNumber(true)
     }
 }

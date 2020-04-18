@@ -1,19 +1,25 @@
-package com.example.nikolay_plyushchay_shop
+package com.example.nikolay_plyushchay_shop.ui
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
+import com.example.nikolay_plyushchay_shop.R
+import com.example.nikolay_plyushchay_shop.model.Basket
+import com.example.nikolay_plyushchay_shop.model.OrderModel
+import com.example.nikolay_plyushchay_shop.model.Product
+import com.example.nikolay_plyushchay_shop.presenter.OrderPresenter
+import com.example.nikolay_plyushchay_shop.presenter.OrderView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), BaseView {
-    private val presenter = BucketPresenter(
-        bucket = Bucket(
+class OrderActivity : BaseActivity(),
+    OrderView {
+    private val presenter = OrderPresenter(
+        basket = Basket(
             listOf(
-                Product(name = "IPhone", price = 123.5, salePercent = 30),
-                Product(name = "Samsung", price = 85.5, salePercent = 20),
-                Product(name = "Xiomi", price = 50.5, salePercent = 10)
+                Product("IPhone", 123.5, 30),
+                Product("Samsung", 85.5, 20),
+                Product("Xiomi", 50.5, 10)
             )
         ),
         order = OrderModel()
@@ -34,7 +40,7 @@ class MainActivity : AppCompatActivity(), BaseView {
     override fun showErrorFirstName(visible: Boolean) = nameFirstField.showError(visible)
     override fun showErrorLastName(visible: Boolean) = nameLastField.showError(visible)
     override fun showErrorFatherName(visible: Boolean) = nameFatherField.showError(visible)
-    override fun showErrorPhoneNubmer(visible: Boolean) = phoneField.showError(visible)
+    override fun showErrorPhoneNumber(visible: Boolean) = phoneField.showError(visible)
 
     private fun setListeners() {
         nameFirstField.addTextChangedListener(object : TextWatcher {

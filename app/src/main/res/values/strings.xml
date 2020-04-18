@@ -7,7 +7,6 @@
     <string name="phoneField">Номер телефона</string>
     <string name="hintPhoneNumber">Пример: 8(+7)9999999999</string>
     <string name="orderAcceptButton">Принять заказ</string>
-    <string name="paymentGroup">Расчёт</string>
     <string name="paymentCard">Безналичный</string>
     <string name="paymentCash">Наличный</string>
 </resources>
