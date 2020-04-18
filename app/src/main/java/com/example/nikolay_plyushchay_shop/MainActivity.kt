@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), BaseView {
     override fun showErrorFirstName(visible: Boolean) = nameFirstField.showError(visible)
     override fun showErrorLastName(visible: Boolean) = nameLastField.showError(visible)
     override fun showErrorFatherName(visible: Boolean) = nameFatherField.showError(visible)
-    override fun showErrorPhoneNubmer(visible: Boolean) = phoneField.showError(visible)
+    override fun showErrorPhoneNumber(visible: Boolean) = phoneField.showError(visible)
 
     private fun setListeners() {
         nameFirstField.addTextChangedListener(object : TextWatcher {

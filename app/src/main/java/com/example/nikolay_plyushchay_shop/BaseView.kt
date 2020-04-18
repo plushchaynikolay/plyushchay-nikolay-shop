@@ -10,5 +10,5 @@ interface BaseView : MvpView {
     fun showErrorFirstName(visible: Boolean)
     fun showErrorLastName(visible: Boolean)
     fun showErrorFatherName(visible: Boolean)
-    fun showErrorPhoneNubmer(visible: Boolean)
+    fun showErrorPhoneNumber(visible: Boolean)
 }

@@ -28,22 +28,22 @@ class BucketPresenter(
 
     fun setOrderLastName(s: String) {
         if (s.length > 2) {
-            order.firstName = s
+            order.lastName = s
             viewState.showErrorLastName(false)
         } else viewState.showErrorLastName(true)
     }
 
     fun setOrderFatherName(s: String) {
         if (s.length > 2) {
-            order.firstName = s
+            order.fatherName = s
             viewState.showErrorFatherName(false)
         } else viewState.showErrorFatherName(true)
     }
 
     fun setOrderPhoneNumber(s: String) {
         if (Regex("(\\+7|8)\\d{10}").matches(s)) {
-            order.firstName = s
-            viewState.showErrorPhoneNubmer(false)
-        } else viewState.showErrorPhoneNubmer(true)
+            order.phoneNumber = s
+            viewState.showErrorPhoneNumber(false)
+        } else viewState.showErrorPhoneNumber(true)
     }
 }
