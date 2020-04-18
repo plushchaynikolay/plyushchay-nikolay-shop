@@ -1,9 +1,14 @@
-package com.example.nikolay_plyushchay_shop
+package com.example.nikolay_plyushchay_shop.presenter
 
 import moxy.MvpPresenter
 import kotlin.math.round
 
-abstract class Presenter : MvpPresenter<BaseView>(){
+/**
+ * Базовый класс для всех классов Presenter.
+ *
+ * TODO(Использовать базовый View вместо OrderView)
+ */
+abstract class Presenter : MvpPresenter<OrderView>() {
     abstract fun print()
 }
 

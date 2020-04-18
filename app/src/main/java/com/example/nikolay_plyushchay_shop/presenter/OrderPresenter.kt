@@ -1,21 +1,24 @@
-package com.example.nikolay_plyushchay_shop
+package com.example.nikolay_plyushchay_shop.presenter
 
-class Bucket(
-    val products: List<Product> = emptyList()
-) {
-    val discountPrice: Double = products.map { product -> product.discountPrice }.sum()
-}
+import com.example.nikolay_plyushchay_shop.model.Basket
+import com.example.nikolay_plyushchay_shop.model.OrderModel
 
-class BucketPresenter(
-    private val bucket: Bucket,
+class OrderPresenter(
+    private val basket: Basket,
     private val order: OrderModel
 ) : Presenter() {
     override fun print() {
         var presentation = ""
-        bucket.products.forEach { p ->
-            presentation += "${p.name}: ${format(p.price)}/${p.salePercent}% = ${format(p.discountPrice)}\n"
+        basket.products.forEach { p ->
+            presentation += "${p.name}: ${format(
+                p.price
+            )}/${p.salePercent}% = ${format(
+                p.discountPrice
+            )}\n"
         }
-        presentation += format(bucket.discountPrice)
+        presentation += format(
+            basket.discountPrice
+        )
         viewState.print(presentation)
     }
 

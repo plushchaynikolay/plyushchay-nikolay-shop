@@ -1,4 +1,4 @@
-package com.example.nikolay_plyushchay_shop
+package com.example.nikolay_plyushchay_shop.model
 
 class Product(
     val name: String,
@@ -13,8 +13,4 @@ class Product(
     val discountPrice: Double = price * (1 - salePercent / 100.0)
 }
 
-class ProductPresenter(
-    val product: Product
-) : Presenter() {
-    override fun print() = viewState.print(format(product.discountPrice))
-}
+
