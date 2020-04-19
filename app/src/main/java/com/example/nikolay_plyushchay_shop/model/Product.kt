@@ -12,5 +12,3 @@ class Product(
 
     val discountPrice: Double = price * (1 - salePercent / 100.0)
 }
-
-
