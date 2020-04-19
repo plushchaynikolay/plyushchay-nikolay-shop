@@ -1,11 +1,11 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
 import com.example.nikolay_plyushchay_shop.model.Basket
-import com.example.nikolay_plyushchay_shop.model.OrderModel
+import com.example.nikolay_plyushchay_shop.model.Order
 
 class OrderPresenter(
     private val basket: Basket,
-    private val order: OrderModel
+    private val order: Order
 ) : Presenter() {
     override fun print() {
         var presentation = ""

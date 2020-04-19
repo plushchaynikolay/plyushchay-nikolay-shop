@@ -6,7 +6,7 @@ import android.text.TextWatcher
 import android.widget.EditText
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.model.Basket
-import com.example.nikolay_plyushchay_shop.model.OrderModel
+import com.example.nikolay_plyushchay_shop.model.Order
 import com.example.nikolay_plyushchay_shop.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.OrderPresenter
 import com.example.nikolay_plyushchay_shop.presenter.OrderView
@@ -22,7 +22,7 @@ class OrderActivity : BaseActivity(),
                 Product("Xiomi", 50.5, 10)
             )
         ),
-        order = OrderModel()
+        order = Order()
     )
 
     override fun print(msg: String) {
@@ -71,6 +71,7 @@ class OrderActivity : BaseActivity(),
                 presenter.setOrderPhoneNumber(s.toString())
             }
         })
+        buttonOrderGoBack.setOnClickListener { finish() }
     }
 }
 
