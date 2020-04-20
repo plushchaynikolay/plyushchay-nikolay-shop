@@ -7,7 +7,7 @@ import com.example.nikolay_plyushchay_shop.R
 import kotlinx.android.synthetic.main.activity_catalog.*
 
 class CatalogActivity : BaseActivity() {
-    private val list = listOf<String>("Пони 1", "Пони 2", "Пони 3")
+    private val list = listOf("Пони 1", "Пони 2", "Пони 3")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalog)

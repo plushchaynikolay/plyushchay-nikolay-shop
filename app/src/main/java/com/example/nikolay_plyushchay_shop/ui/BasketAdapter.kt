@@ -17,7 +17,7 @@ class BasketAdapter(
         ViewHolder(
             LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.catalog_item, parent, false)
+                .inflate(R.layout.basket_item, parent, false)
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

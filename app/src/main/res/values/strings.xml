@@ -2,7 +2,6 @@
     <!-- Общие -->
     <string name="app_name">МММ</string>
     <string name="app_full_name">Мой маленький магазинчик</string>
-    <string name="forward">Далее</string>
     <string name="backward">ᐊ</string>
     <!-- Каталог -->
     <string name="headerCatalog">@string/app_full_name</string>
@@ -16,6 +15,7 @@
     <!-- Информация о корзине -->
     <string name="headerBasket">Корзина</string>
     <string name="buttonMakeOrder">Оформить заказ</string>
+    <string name="buttonDeleteItem">Удалить</string>
     <!-- Оформление заказа -->
     <string name="headerOrder">Оформление заказа</string>
     <string name="nameFirstField">Имя</string>

@@ -4,11 +4,9 @@ import com.example.nikolay_plyushchay_shop.ui.BasketView
 import moxy.MvpPresenter
 
 class BasketPresenter : MvpPresenter<BasketView>() {
-    private val list = mutableListOf<String>("Пони 1", "Пони 2", "Пони 3")
+    private val list = mutableListOf("Пони 1", "Пони 2", "Пони 3")
 
-    fun setItems() {
-        viewState.setItems(list)
-    }
+    fun setItems() = viewState.setItems(list)
 
     fun removeItem(name: String) {
         val position = list.indexOf(name)

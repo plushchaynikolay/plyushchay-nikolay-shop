@@ -12,15 +12,16 @@
         android:layout_margin="16dp"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/basketDeleteIb"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Catalog Item 1" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/basketDeleteIb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/buttonDeleteItem"
         android:padding="16dp"
         android:src="@drawable/ic_delete_forever_red_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
