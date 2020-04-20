@@ -1,12 +1,29 @@
 <resources>
+    <!-- Общие -->
     <string name="app_name">МММ</string>
-    <string name="header">Мой маленький магазинчик</string>
+    <string name="app_full_name">Мой маленький магазинчик</string>
+    <string name="forward">Далее</string>
+    <string name="backward">ᐊ</string>
+    <!-- Каталог -->
+    <string name="headerCatalog">@string/app_full_name</string>
+    <string name="buttonBasket">Перейти в корзину</string>
+    <!-- Информация о товаре -->
+    <string name="headerProduct">Подробности</string>
+    <string name="productName">Название</string>
+    <string name="productPrice">Цена</string>
+    <string name="productDiscount">Скидка</string>
+    <string name="productPriceWithDiscount">Цена со скидкой</string>
+    <!-- Информация о корзине -->
+    <string name="headerBasket">Корзина</string>
+    <string name="buttonMakeOrder">Оформить заказ</string>
+    <!-- Оформление заказа -->
+    <string name="headerOrder">Оформление заказа</string>
     <string name="nameFirstField">Имя</string>
     <string name="nameLastField">Фамилия</string>
     <string name="nameFatherField">Отчество</string>
     <string name="phoneField">Номер телефона</string>
     <string name="hintPhoneNumber">Пример: 8(+7)9999999999</string>
     <string name="orderAcceptButton">Принять заказ</string>
-    <string name="paymentCard">Безналичный</string>
-    <string name="paymentCash">Наличный</string>
+    <string name="paymentCard">₿ Биткоины</string>
+    <string name="paymentCash">$ Кэш</string>
 </resources>

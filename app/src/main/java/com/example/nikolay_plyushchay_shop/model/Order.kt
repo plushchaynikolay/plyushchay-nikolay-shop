@@ -1,6 +1,6 @@
 package com.example.nikolay_plyushchay_shop.model
 
-data class OrderModel(
+data class Order(
     var firstName: String = "",
     var lastName: String = "",
     var fatherName: String = "",
