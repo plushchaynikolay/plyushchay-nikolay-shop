@@ -1,6 +1,7 @@
 package com.example.nikolay_plyushchay_shop.ui
 
 import android.graphics.Color
+import android.graphics.Paint
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
@@ -38,7 +39,8 @@ class BasketAdapter(
             itemView.basketTvName.text = product.name
             if (product.discount > 0) {
                 itemView.basketTvOldPrice.text = format(product.price)
-                itemView.basketTvOldPrice.setTypeface(null, Typeface.ITALIC)
+                itemView.basketTvOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
                 itemView.basketTvPrice.text = format(product.discountPrice)
                 itemView.basketTvPrice.setTextColor(Color.parseColor("#FFFF4444"))
                 itemView.basketTvPrice.setTypeface(null, Typeface.BOLD)
