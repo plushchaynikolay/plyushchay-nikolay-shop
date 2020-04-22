@@ -2,22 +2,24 @@ package com.example.nikolay_plyushchay_shop.presenter
 
 import com.example.nikolay_plyushchay_shop.model.Basket
 import com.example.nikolay_plyushchay_shop.model.Order
+import com.example.nikolay_plyushchay_shop.ui.OrderView
+import moxy.MvpPresenter
 
 class OrderPresenter(
     private val basket: Basket,
     private val order: Order
-) : Presenter() {
-    override fun print() {
+) : MvpPresenter<OrderView>() {
+    fun print() {
         var presentation = ""
         basket.products.forEach { p ->
             presentation += "${p.name}: ${format(
                 p.price
-            )}/${p.salePercent}% = ${format(
+            )}/${p.discount}% = ${format(
                 p.discountPrice
             )}\n"
         }
         presentation += format(
-            basket.discountPrice
+            basket.getDiscountPrice()
         )
         viewState.print(presentation)
     }

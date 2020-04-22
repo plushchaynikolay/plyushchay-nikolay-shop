@@ -1,8 +1,8 @@
 package com.example.nikolay_plyushchay_shop.model
 
 class Basket(
-    val products: List<Product> = emptyList()
+    val products: MutableList<Product> = mutableListOf()
 ) {
-    val price: Double = products.map { product -> product.price }.sum()
-    val discountPrice: Double = products.map { product -> product.discountPrice }.sum()
+    fun getPrice(): Double = products.map { product -> product.price }.sum()
+    fun getDiscountPrice(): Double = products.map { product -> product.discountPrice }.sum()
 }
