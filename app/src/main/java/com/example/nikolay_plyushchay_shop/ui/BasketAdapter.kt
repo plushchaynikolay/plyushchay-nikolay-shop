@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.format
-import kotlinx.android.synthetic.main.basket_item.view.*
+import kotlinx.android.synthetic.main.product_item.view.*
 
 class BasketAdapter(
     private val onDelete: (string: String) -> Unit
@@ -22,7 +22,7 @@ class BasketAdapter(
         ViewHolder(
             LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.basket_item, parent, false)
+                .inflate(R.layout.product_item, parent, false)
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -36,17 +36,17 @@ class BasketAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(product: Product) {
-            itemView.basketTvName.text = product.name
+            itemView.productTvName.text = product.name
             if (product.discount > 0) {
-                itemView.basketTvOldPrice.text = format(product.price)
-                itemView.basketTvOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                itemView.productTvOldPrice.text = format(product.price)
+                itemView.productTvOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
-                itemView.basketTvPrice.text = format(product.discountPrice)
-                itemView.basketTvPrice.setTextColor(Color.parseColor("#FFFF4444"))
-                itemView.basketTvPrice.setTypeface(null, Typeface.BOLD)
+                itemView.productTvPrice.text = format(product.discountPrice)
+                itemView.productTvPrice.setTextColor(Color.parseColor("#FFFF4444"))
+                itemView.productTvPrice.setTypeface(null, Typeface.BOLD)
             } else {
-                itemView.basketTvOldPrice.text = ""
-                itemView.basketTvPrice.text = format(product.price)
+                itemView.productTvOldPrice.text = ""
+                itemView.productTvPrice.text = format(product.price)
             }
             itemView.basketDeleteIb.setOnClickListener { onDelete(product.name) }
         }
