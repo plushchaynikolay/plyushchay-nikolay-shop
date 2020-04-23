@@ -6,16 +6,40 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/basketTv"
+        android:id="@+id/productTvName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/basketDeleteIb"
+        app:layout_constraintEnd_toStartOf="@+id/productTvOldPrice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Catalog Item 1" />
+        tools:text="Catalog Item Name" />
+
+    <TextView
+        android:id="@+id/productTvOldPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/productTvPrice"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="500" />
+
+    <TextView
+        android:id="@+id/productTvPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/basketDeleteIb"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="100" />
 
     <ImageButton
         android:id="@+id/basketDeleteIb"

@@ -6,6 +6,7 @@
     <!-- Каталог -->
     <string name="headerCatalog">@string/app_full_name</string>
     <string name="buttonBasket">Перейти в корзину</string>
+    <string name="addProductToBasket">Добавить</string>
     <!-- Информация о товаре -->
     <string name="headerProduct">Подробности</string>
     <string name="productName">Название</string>
