@@ -1,15 +1,12 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
-import com.example.nikolay_plyushchay_shop.model.Product
-import com.example.nikolay_plyushchay_shop.ui.ProductView
+import com.example.nikolay_plyushchay_shop.domain.model.Product
 import moxy.MvpPresenter
 import kotlin.math.round
 
 class ProductPresenter(
     var product: Product
-) : MvpPresenter<ProductView>() {
-    fun print() = viewState.print(format(product.discountPrice))
-}
+) : MvpPresenter<ProductView>()
 
 fun format(price: Double): String {
     val roundedPrice = round(100.0 * price) / 100.0

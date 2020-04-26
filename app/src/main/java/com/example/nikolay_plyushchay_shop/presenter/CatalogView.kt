@@ -1,12 +1,11 @@
-package com.example.nikolay_plyushchay_shop.ui
+package com.example.nikolay_plyushchay_shop.presenter
 
-import com.example.nikolay_plyushchay_shop.model.Product
+import com.example.nikolay_plyushchay_shop.domain.model.Product
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface BasketView : MvpView {
+interface CatalogView : MvpView {
     fun setItems(products: List<Product>)
-    fun removeItem(position: Int)
 }

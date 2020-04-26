@@ -1,4 +1,4 @@
-package com.example.nikolay_plyushchay_shop.ui
+package com.example.nikolay_plyushchay_shop.presenter
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy

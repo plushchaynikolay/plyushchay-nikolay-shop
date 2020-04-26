@@ -1,26 +1,27 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
-import com.example.nikolay_plyushchay_shop.model.Basket
-import com.example.nikolay_plyushchay_shop.model.Order
-import com.example.nikolay_plyushchay_shop.ui.OrderView
+import com.example.nikolay_plyushchay_shop.domain.model.Basket
+import com.example.nikolay_plyushchay_shop.domain.model.Order
+import com.example.nikolay_plyushchay_shop.domain.model.Product
 import moxy.MvpPresenter
 
-class OrderPresenter(
-    private val basket: Basket,
-    private val order: Order
-) : MvpPresenter<OrderView>() {
+class OrderPresenter : MvpPresenter<OrderView>() {
+    private val order = Order()
+    private val basket: Basket = Basket(
+        mutableListOf(
+            Product("IPhone", 123.5, 30),
+            Product("Samsung", 85.5, 20),
+            Product("Xiomi", 50.5, 10)
+        )
+    )
+
     fun print() {
         var presentation = ""
         basket.products.forEach { p ->
-            presentation += "${p.name}: ${format(
-                p.price
-            )}/${p.discount}% = ${format(
-                p.discountPrice
-            )}\n"
+            presentation +=
+                "${p.name}: ${format(p.price)}/${p.discount}% = ${format(p.discountPrice)}\n"
         }
-        presentation += format(
-            basket.getDiscountPrice()
-        )
+        presentation += format(basket.getDiscountPrice())
         viewState.print(presentation)
     }
 

@@ -5,24 +5,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import com.example.nikolay_plyushchay_shop.R
-import com.example.nikolay_plyushchay_shop.model.Basket
-import com.example.nikolay_plyushchay_shop.model.Order
-import com.example.nikolay_plyushchay_shop.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.OrderPresenter
+import com.example.nikolay_plyushchay_shop.presenter.OrderView
 import kotlinx.android.synthetic.main.activity_order.*
 
-class OrderActivity : BaseActivity(),
-    OrderView {
-    private val presenter = OrderPresenter(
-        Basket(
-            mutableListOf(
-                Product("IPhone", 123.5, 30),
-                Product("Samsung", 85.5, 20),
-                Product("Xiomi", 50.5, 10)
-            )
-        ),
-        Order()
-    )
+class OrderActivity : BaseActivity(), OrderView {
+    private val presenter = OrderPresenter()
 
     override fun print(msg: String) {
         textViewOrderInfo.text = msg

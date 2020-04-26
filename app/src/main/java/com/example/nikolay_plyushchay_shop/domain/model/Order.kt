@@ -1,4 +1,4 @@
-package com.example.nikolay_plyushchay_shop.model
+package com.example.nikolay_plyushchay_shop.domain.model
 
 data class Order(
     var firstName: String = "",

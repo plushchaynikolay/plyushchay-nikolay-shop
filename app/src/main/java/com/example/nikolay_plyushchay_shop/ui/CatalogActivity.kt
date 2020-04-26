@@ -4,23 +4,25 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolay_plyushchay_shop.R
-import com.example.nikolay_plyushchay_shop.model.Product
+import com.example.nikolay_plyushchay_shop.domain.model.Product
+import com.example.nikolay_plyushchay_shop.presenter.CatalogPresenter
+import com.example.nikolay_plyushchay_shop.presenter.CatalogView
+import com.example.nikolay_plyushchay_shop.ui.ProductInfoActivity.Companion.PRODUCT_TAG
 import kotlinx.android.synthetic.main.activity_catalog.*
+import moxy.ktx.moxyPresenter
 
-class CatalogActivity : BaseActivity() {
-    private val list = listOf(
-        Product("Applejack", 130.0),
-        Product("Pinkie Pie", 150.0, 20),
-        Product("Rarity", 115.0)
-    )
+class CatalogActivity : BaseActivity(), CatalogView {
+    private val presenter by moxyPresenter { CatalogPresenter() }
+    private val adapter = CatalogAdapter { openProductInfo(it) }
+
+    override fun setItems(products: List<Product>) = adapter.setItems(products)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalog)
         setListeners()
-
         catalogRv.layoutManager = LinearLayoutManager(this)
-        catalogRv.adapter = CatalogAdapter(list)
+        catalogRv.adapter = adapter
     }
 
     private fun setListeners() {
@@ -29,4 +31,8 @@ class CatalogActivity : BaseActivity() {
             startActivity(intent)
         }
     }
+
+    private fun openProductInfo(product: Product) = startActivity(
+        Intent(this, ProductInfoActivity::class.java)
+            .apply { putExtra(PRODUCT_TAG, product) })
 }

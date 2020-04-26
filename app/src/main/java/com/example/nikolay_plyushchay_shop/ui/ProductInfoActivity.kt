@@ -14,4 +14,8 @@ class ProductInfoActivity : BaseActivity() {
     private fun setListeners() {
         buttonProductGoBack.setOnClickListener { finish() }
     }
+
+    companion object {
+        val PRODUCT_TAG = "PRODUCT_TAG"
+    }
 }

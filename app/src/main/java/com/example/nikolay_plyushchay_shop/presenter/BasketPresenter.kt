@@ -1,17 +1,32 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
-import com.example.nikolay_plyushchay_shop.model.Basket
-import com.example.nikolay_plyushchay_shop.model.Product
-import com.example.nikolay_plyushchay_shop.ui.BasketView
+import com.example.nikolay_plyushchay_shop.domain.ViewedProductDao
+import com.example.nikolay_plyushchay_shop.domain.model.Basket
+import com.example.nikolay_plyushchay_shop.domain.model.Product
+import moxy.InjectViewState
 import moxy.MvpPresenter
 
-class BasketPresenter : MvpPresenter<BasketView>() {
+@InjectViewState
+class BasketPresenter(
+    private val viewedProductDao: ViewedProductDao
+) : MvpPresenter<BasketView>() {
     private val basket = Basket(
         mutableListOf(
             Product("Rainbow Dash", 100.0),
             Product("Twilight Sparkle", 120.0, 15)
         )
     )
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        setItems()
+    }
+
+    override fun attachView(view: BasketView?) {
+        super.attachView(view)
+        val productIds = viewedProductDao.getAllProducts()
+        viewState.showProductIds(productIds)
+    }
 
     fun setItems() = viewState.setItems(basket.products)
 
