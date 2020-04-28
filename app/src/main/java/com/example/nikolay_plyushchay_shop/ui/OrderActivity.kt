@@ -8,20 +8,19 @@ import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.presenter.OrderPresenter
 import com.example.nikolay_plyushchay_shop.presenter.OrderView
 import kotlinx.android.synthetic.main.activity_order.*
+import moxy.ktx.moxyPresenter
 
 class OrderActivity : BaseActivity(), OrderView {
-    private val presenter = OrderPresenter()
+    private val presenter by moxyPresenter { OrderPresenter() }
 
-    override fun print(msg: String) {
+    override fun printTotal(msg: String) {
         textViewOrderInfo.text = msg
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
-        presenter.attachView(this)
         setListeners()
-        presenter.print()
     }
 
     override fun showErrorFirstName(visible: Boolean) = nameFirstField.showError(visible)
