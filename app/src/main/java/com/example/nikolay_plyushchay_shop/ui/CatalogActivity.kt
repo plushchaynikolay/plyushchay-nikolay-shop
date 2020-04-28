@@ -4,15 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolay_plyushchay_shop.R
+import com.example.nikolay_plyushchay_shop.domain.MainApi
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.CatalogPresenter
 import com.example.nikolay_plyushchay_shop.presenter.CatalogView
 import com.example.nikolay_plyushchay_shop.ui.ProductInfoActivity.Companion.PRODUCT_TAG
 import kotlinx.android.synthetic.main.activity_catalog.*
 import moxy.ktx.moxyPresenter
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class CatalogActivity : BaseActivity(), CatalogView {
-    private val presenter by moxyPresenter { CatalogPresenter() }
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("http://207.254.71.167:9191/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    private val api = retrofit.create(MainApi::class.java)
+    private val presenter by moxyPresenter { CatalogPresenter(api) }
     private val adapter = CatalogAdapter { openProductInfo(it) }
 
     override fun setItems(products: List<Product>) = adapter.setItems(products)
