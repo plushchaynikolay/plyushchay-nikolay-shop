@@ -40,7 +40,8 @@ class BasketActivity : BaseActivity(), BasketView {
         }
     }
 
-    private fun openProductInfo(product: Product) = startActivity(
-        Intent(this, ProductInfoActivity::class.java)
+    private fun openProductInfo(product: Product) {
+        startActivity(Intent(this, ProductInfoActivity::class.java)
             .apply { putExtra(ProductInfoActivity.PRODUCT_TAG, product) })
+    }
 }

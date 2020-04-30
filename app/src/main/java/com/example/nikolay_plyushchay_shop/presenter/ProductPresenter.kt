@@ -1,12 +1,17 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
 import com.example.nikolay_plyushchay_shop.domain.model.Product
-import moxy.MvpPresenter
+import moxy.InjectViewState
 import kotlin.math.round
 
-class ProductPresenter(
-    var product: Product
-) : MvpPresenter<ProductView>()
+//@InjectViewState
+//class ProductPresenter : BasePresenter<ProductView>() {
+//    var product: Product? = null
+//    override fun onFirstViewAttach() {
+//        super.onFirstViewAttach()
+//        product?.let { viewState.setProductInfoLayout(it) }
+//    }
+//}
 
 fun format(price: Double): String {
     val roundedPrice = round(100.0 * price) / 100.0

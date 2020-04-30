@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import moxy.MvpAppCompatActivity
 
 abstract class BaseActivity : MvpAppCompatActivity() {
-    val tag = this.javaClass.simpleName
+    private val tag = this.javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

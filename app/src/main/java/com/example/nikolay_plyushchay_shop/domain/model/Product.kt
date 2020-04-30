@@ -11,6 +11,7 @@ class Product(
     val price: Double,
     val discount: Int = 0,
     val description: String = "",
+    val imageUrl: String? = null,
     val id: String = nextId().toString()
 ) : Parcelable {
     init {

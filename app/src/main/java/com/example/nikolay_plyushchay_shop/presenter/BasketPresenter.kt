@@ -23,8 +23,8 @@ class BasketPresenter(
         setItems()
     }
 
-    fun removeItem(name: String) {
-        val product = basket.products.find { p -> p.name == name }
+    fun removeItem(id: String) {
+        val product = basket.products.find { p -> p.id == id }
         val position = basket.products.indexOf(product)
         basket.products.removeAt(position)
         viewState.removeItem(position)

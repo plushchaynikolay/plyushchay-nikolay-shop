@@ -22,7 +22,7 @@ class CatalogPresenter(
             val remoteProducts = api.allProducts()
             products = remoteProducts.mapNotNull { r ->
                 try {
-                    Product(r.name, r.price, r.discount, r.description, r.id)
+                    Product(r.name, r.price, r.discount, r.description, r.imageUrl, r.id)
                 } catch (e: VerifyError) {
                     null
                 }

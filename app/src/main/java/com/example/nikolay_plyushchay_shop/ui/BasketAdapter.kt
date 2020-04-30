@@ -52,7 +52,7 @@ class BasketAdapter(
                 productTvPrice.text = format(product.price)
             }
             productTvName.setOnClickListener { openProductInfo(product) }
-            basketDeleteIb.setOnClickListener { onDelete(product.name) }
+            basketDeleteIb.setOnClickListener { onDelete(product.id) }
         }
     }
 }
