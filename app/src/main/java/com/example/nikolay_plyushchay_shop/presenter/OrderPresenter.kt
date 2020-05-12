@@ -3,9 +3,10 @@ package com.example.nikolay_plyushchay_shop.presenter
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.domain.model.Order
 import com.example.nikolay_plyushchay_shop.domain.model.Product
-import moxy.MvpPresenter
+import moxy.InjectViewState
 
-class OrderPresenter : MvpPresenter<OrderView>() {
+@InjectViewState
+class OrderPresenter : BasePresenter<OrderView>() {
     private val order = Order()
     private val basket: Basket = Basket(
         mutableListOf(
@@ -15,14 +16,22 @@ class OrderPresenter : MvpPresenter<OrderView>() {
         )
     )
 
-    fun print() {
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        viewState.printTotal(performTotal())
+    }
+
+    private fun performTotal(): String {
         var presentation = ""
         basket.products.forEach { p ->
-            presentation +=
+            presentation += if (p.discount > 0) {
                 "${p.name}: ${format(p.price)}/${p.discount}% = ${format(p.discountPrice)}\n"
+            } else {
+                "${p.name}: = ${format(p.price)}\n"
+            }
         }
         presentation += format(basket.getDiscountPrice())
-        viewState.print(presentation)
+        return presentation
     }
 
     fun setOrderFirstName(s: String) {

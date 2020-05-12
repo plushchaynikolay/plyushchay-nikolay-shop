@@ -13,6 +13,7 @@
     <string name="productPrice">Цена</string>
     <string name="productDiscount">Скидка</string>
     <string name="productPriceWithDiscount">Цена со скидкой</string>
+    <string name="productImageTitle">Изображение товара</string>
     <!-- Информация о корзине -->
     <string name="headerBasket">Корзина</string>
     <string name="buttonMakeOrder">Оформить заказ</string>

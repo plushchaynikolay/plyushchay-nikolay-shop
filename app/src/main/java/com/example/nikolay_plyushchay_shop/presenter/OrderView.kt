@@ -6,7 +6,7 @@ import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface OrderView : MvpView {
-    fun print(msg: String)
+    fun printTotal(msg: String)
     fun showErrorFirstName(visible: Boolean)
     fun showErrorLastName(visible: Boolean)
     fun showErrorFatherName(visible: Boolean)

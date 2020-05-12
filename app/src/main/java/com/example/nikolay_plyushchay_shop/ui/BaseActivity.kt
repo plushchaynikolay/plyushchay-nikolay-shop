@@ -1,11 +1,14 @@
 package com.example.nikolay_plyushchay_shop.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import moxy.MvpAppCompatActivity
 
 abstract class BaseActivity : MvpAppCompatActivity() {
-    val tag = this.javaClass.simpleName
+    private val tag = this.javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,3 +45,6 @@ abstract class BaseActivity : MvpAppCompatActivity() {
         Log.d(tag, "onDestroy")
     }
 }
+
+val AppCompatActivity.sharedPreferences: SharedPreferences
+    get() = getSharedPreferences("data", Context.MODE_PRIVATE)
