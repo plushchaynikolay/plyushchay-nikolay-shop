@@ -3,6 +3,7 @@ package com.example.nikolay_plyushchay_shop.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.nikolay_plyushchay_shop.App
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.domain.MainApi
 import com.example.nikolay_plyushchay_shop.domain.model.Product
@@ -11,21 +12,20 @@ import com.example.nikolay_plyushchay_shop.presenter.CatalogView
 import com.example.nikolay_plyushchay_shop.ui.ProductInfoActivity.Companion.PRODUCT_TAG
 import kotlinx.android.synthetic.main.activity_catalog.*
 import moxy.ktx.moxyPresenter
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 class CatalogActivity : BaseActivity(), CatalogView {
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("http://207.254.71.167:9191/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-    private val api = retrofit.create(MainApi::class.java)
-    private val presenter by moxyPresenter { CatalogPresenter(api) }
+
+    @Inject
+    lateinit var mainApi: MainApi
+
+    private val presenter by moxyPresenter { CatalogPresenter(mainApi) }
     private val adapter = CatalogAdapter { openProductInfo(it) }
 
     override fun setItems(products: List<Product>) = adapter.setItems(products)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalog)
         setListeners()
