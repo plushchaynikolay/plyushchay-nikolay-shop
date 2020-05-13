@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolay_plyushchay_shop.App
 import com.example.nikolay_plyushchay_shop.R
-import com.example.nikolay_plyushchay_shop.domain.MainApi
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.CatalogPresenter
 import com.example.nikolay_plyushchay_shop.presenter.CatalogView
@@ -17,9 +16,9 @@ import javax.inject.Inject
 class CatalogActivity : BaseActivity(), CatalogView {
 
     @Inject
-    lateinit var mainApi: MainApi
+    lateinit var catalogPresenter: CatalogPresenter
 
-    private val presenter by moxyPresenter { CatalogPresenter(mainApi) }
+    private val presenter by moxyPresenter { catalogPresenter }
     private val adapter = CatalogAdapter { openProductInfo(it) }
 
     override fun setItems(products: List<Product>) = adapter.setItems(products)
