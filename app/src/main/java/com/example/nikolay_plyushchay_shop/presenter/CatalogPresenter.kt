@@ -4,16 +4,14 @@ import com.example.nikolay_plyushchay_shop.domain.MainApi
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import kotlinx.coroutines.launch
 import moxy.InjectViewState
+import java.net.UnknownHostException
+import javax.inject.Inject
 
 @InjectViewState
-class CatalogPresenter(
+class CatalogPresenter @Inject constructor(
     private val api: MainApi
 ) : CoroutinePresenter<CatalogView>() {
-    var products = listOf(
-        Product("Applejack", 130.0),
-        Product("Pinkie Pie", 150.0, 20),
-        Product("Rarity", 115.0)
-    )
+    lateinit var products: List<Product>
 
 
     override fun onFirstViewAttach() {
