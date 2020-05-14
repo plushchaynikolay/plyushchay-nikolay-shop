@@ -9,22 +9,15 @@ import moxy.InjectViewState
 class BasketPresenter(
     private val basketProductDao: BasketProductDao
 ) : BasePresenter<BasketView>() {
-    private val basket = Basket(
-        mutableListOf(
-            Product("Rainbow Dash", 100.0, id = "0"),
-            Product("Twilight Sparkle", 120.0, 15, id = "1")
-        )
-    )
-
+    private val basket = Basket(basketProductDao.getAllProducts().toMutableList())
     fun setItems() = viewState.setItems(basket.products)
-
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         setItems()
     }
 
-    fun removeItem(id: String) {
-        val product = basket.products.find { p -> p.id == id }
+    fun removeItem(product: Product) {
+        basketProductDao.removeProduct(product)
         val position = basket.products.indexOf(product)
         basket.products.removeAt(position)
         viewState.removeItem(position)

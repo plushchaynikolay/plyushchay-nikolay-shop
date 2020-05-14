@@ -14,6 +14,6 @@ class PreferencesModule {
         context.getSharedPreferences("data", Context.MODE_PRIVATE)
 
     @Provides
-    fun provideViewedProduct(preferences: SharedPreferences): BasketProductDao =
+    fun provideBasketProduct(preferences: SharedPreferences): BasketProductDao =
         SharedPreferencesBasketDao(preferences)
 }
