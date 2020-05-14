@@ -20,7 +20,10 @@ class CatalogActivity : BaseActivity(), CatalogView {
     lateinit var catalogPresenter: CatalogPresenter
 
     private val presenter by moxyPresenter { catalogPresenter }
-    private val adapter = CatalogAdapter { openProductInfo(it) }
+    private val adapter = CatalogAdapter(
+        { openProductInfo(it) },
+        { presenter.addProductToBasket(it) }
+    )
 
     override fun setItems(products: List<Product>) = adapter.setItems(products)
 
@@ -33,22 +36,23 @@ class CatalogActivity : BaseActivity(), CatalogView {
         catalogRv.adapter = adapter
     }
 
-    private fun setListeners() {
-        buttonToBasket.setOnClickListener {
-            val intent = Intent(this, BasketActivity::class.java)
-            startActivity(intent)
-        }
+    private fun setListeners() = buttonToBasket.setOnClickListener {
+        startActivity(Intent(this, BasketActivity::class.java))
     }
 
     private fun openProductInfo(product: Product) = startActivity(
         Intent(this, ProductInfoActivity::class.java)
             .apply { putExtra(PRODUCT_TAG, product) })
 
-    override fun showInternetError() {
-        Toast.makeText(this, "Проверьте подключение к интернету", Toast.LENGTH_LONG).show()
-    }
+    override fun showInternetError() =
+        Toast.makeText(this, "Проверьте подключение к интернету", Toast.LENGTH_LONG)
+            .show()
 
-    override fun showServerError() {
-        Toast.makeText(this, "Сервер товаров временно недоступен", Toast.LENGTH_LONG).show()
-    }
+    override fun showServerError() =
+        Toast.makeText(this, "Сервер товаров временно недоступен", Toast.LENGTH_LONG)
+            .show()
+
+    override fun showProductAdded() =
+        Toast.makeText(this, "Добавлено", Toast.LENGTH_LONG)
+            .show()
 }

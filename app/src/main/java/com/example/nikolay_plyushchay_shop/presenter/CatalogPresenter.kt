@@ -44,4 +44,9 @@ class CatalogPresenter @Inject constructor(
             viewState.showInternetError()
         }
     }
+
+    fun addProductToBasket(product: Product) {
+        basketProductDao.addProduct(product)
+        viewState.showProductAdded()
+    }
 }

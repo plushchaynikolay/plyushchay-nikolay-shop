@@ -13,9 +13,7 @@ import moxy.ktx.moxyPresenter
 
 class BasketActivity : BaseActivity(), BasketView {
     private val presenter by moxyPresenter {
-        BasketPresenter(
-            SharedPreferencesBasketDao(sharedPreferences)
-        )
+        BasketPresenter(SharedPreferencesBasketDao(sharedPreferences))
     }
     private val adapter = BasketAdapter(
         { p -> presenter.removeItem(p) },
