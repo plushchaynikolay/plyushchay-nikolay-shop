@@ -2,19 +2,16 @@ package com.example.nikolay_plyushchay_shop.presenter
 
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.domain.model.Order
-import com.example.nikolay_plyushchay_shop.domain.model.Product
 import moxy.InjectViewState
 
 @InjectViewState
 class OrderPresenter : BasePresenter<OrderView>() {
     private val order = Order()
-    private val basket: Basket = Basket(
-        mutableListOf(
-            Product("IPhone", 123.5, 30, id = "0"),
-            Product("Samsung", 85.5, 20, id = "0"),
-            Product("Xiomi", 50.5, 10, id = "0")
-        )
-    )
+    private lateinit var basket: Basket
+
+    fun setBasket(basket: Basket) {
+        this.basket = basket
+    }
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()

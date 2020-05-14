@@ -12,12 +12,14 @@ class BasketPresenter @Inject constructor(
 ) : BasePresenter<BasketView>() {
     private val basket = Basket(basketProductDao.getAllProducts().toMutableList())
 
-    fun setItems() = viewState.setItems(basket.products)
-
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         setItems()
     }
+
+    fun setItems() = viewState.setItems(basket.products)
+
+    fun passBasketToOrder() = viewState.openBasketOrder(basket)
 
     fun removeItem(product: Product) {
         basketProductDao.removeProduct(product)

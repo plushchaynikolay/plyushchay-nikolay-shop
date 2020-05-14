@@ -3,6 +3,7 @@ package com.example.nikolay_plyushchay_shop.ui
 import android.os.Bundle
 import android.widget.EditText
 import com.example.nikolay_plyushchay_shop.R
+import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.presenter.OrderPresenter
 import com.example.nikolay_plyushchay_shop.presenter.OrderView
 import com.example.nikolay_plyushchay_shop.utils.AfterTextChangedWatcher
@@ -19,6 +20,8 @@ class OrderActivity : BaseActivity(), OrderView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
+        val basket = intent?.getParcelableExtra(BASKET_TAG) ?: Basket(mutableListOf())
+        presenter.setBasket(basket)
         setListeners()
     }
 
@@ -42,6 +45,11 @@ class OrderActivity : BaseActivity(), OrderView {
         })
         buttonOrderGoBack.setOnClickListener { finish() }
     }
+
+    companion object {
+        const val BASKET_TAG = "BASKET_TAG"
+    }
+
 }
 
 fun EditText.showError(visible: Boolean) {
