@@ -11,8 +11,8 @@ class BasketPresenter(
 ) : BasePresenter<BasketView>() {
     private val basket = Basket(
         mutableListOf(
-            Product("Rainbow Dash", 100.0),
-            Product("Twilight Sparkle", 120.0, 15)
+            Product("Rainbow Dash", 100.0, id = "0"),
+            Product("Twilight Sparkle", 120.0, 15, id = "1")
         )
     )
 
