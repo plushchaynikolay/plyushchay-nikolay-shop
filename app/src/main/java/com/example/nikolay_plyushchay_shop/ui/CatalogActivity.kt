@@ -2,6 +2,7 @@ package com.example.nikolay_plyushchay_shop.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolay_plyushchay_shop.App
 import com.example.nikolay_plyushchay_shop.R
@@ -42,4 +43,12 @@ class CatalogActivity : BaseActivity(), CatalogView {
     private fun openProductInfo(product: Product) = startActivity(
         Intent(this, ProductInfoActivity::class.java)
             .apply { putExtra(PRODUCT_TAG, product) })
+
+    override fun showInternetError() {
+        Toast.makeText(this, "Проверьте подключение к интернету", Toast.LENGTH_LONG).show()
+    }
+
+    override fun showServerError() {
+        Toast.makeText(this, "Сервер товаров временно недоступен", Toast.LENGTH_LONG).show()
+    }
 }

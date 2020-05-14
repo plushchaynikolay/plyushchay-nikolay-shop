@@ -4,6 +4,7 @@ import com.example.nikolay_plyushchay_shop.domain.MainApi
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import kotlinx.coroutines.launch
 import moxy.InjectViewState
+import java.net.ConnectException
 import java.net.UnknownHostException
 import javax.inject.Inject
 
@@ -13,10 +14,19 @@ class CatalogPresenter @Inject constructor(
 ) : CoroutinePresenter<CatalogView>() {
     lateinit var products: List<Product>
 
-
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        launch {
+        launch { loadProducts() }
+    }
+
+    override fun attachView(view: CatalogView?) {
+        super.attachView(view)
+        if (!this::products.isInitialized)
+            launch { loadProducts() }
+    }
+
+    private suspend fun loadProducts() {
+        try {
             val remoteProducts = api.allProducts()
             products = remoteProducts.mapNotNull { r ->
                 try {
@@ -26,6 +36,11 @@ class CatalogPresenter @Inject constructor(
                 }
             }
             viewState.setItems(products)
+        } catch (e: UnknownHostException) {
+            viewState.showServerError()
+        } catch (e: ConnectException) {
+            viewState.showInternetError()
         }
     }
+
 }
