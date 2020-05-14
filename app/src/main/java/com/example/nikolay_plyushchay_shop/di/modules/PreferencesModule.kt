@@ -2,8 +2,8 @@ package com.example.nikolay_plyushchay_shop.di.modules
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.nikolay_plyushchay_shop.data.ViewedProductDaoImpl
-import com.example.nikolay_plyushchay_shop.domain.ViewedProductDao
+import com.example.nikolay_plyushchay_shop.data.SharedPreferencesBasketProductDao
+import com.example.nikolay_plyushchay_shop.domain.BasketProductDao
 import dagger.Module
 import dagger.Provides
 
@@ -14,6 +14,6 @@ class PreferencesModule {
         context.getSharedPreferences("data", Context.MODE_PRIVATE)
 
     @Provides
-    fun provideViewedProduct(preferences: SharedPreferences): ViewedProductDao =
-        ViewedProductDaoImpl(preferences)
+    fun provideViewedProduct(preferences: SharedPreferences): BasketProductDao =
+        SharedPreferencesBasketProductDao(preferences)
 }

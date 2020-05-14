@@ -1,13 +1,13 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
-import com.example.nikolay_plyushchay_shop.domain.ViewedProductDao
+import com.example.nikolay_plyushchay_shop.domain.BasketProductDao
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import moxy.InjectViewState
 
 @InjectViewState
 class BasketPresenter(
-    private val viewedProductDao: ViewedProductDao
+    private val viewedProductDao: BasketProductDao
 ) : BasePresenter<BasketView>() {
     private val basket = Basket(
         mutableListOf(
