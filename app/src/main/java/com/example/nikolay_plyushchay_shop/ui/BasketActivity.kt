@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolay_plyushchay_shop.R
-import com.example.nikolay_plyushchay_shop.data.SharedPreferencesBasketProductDao
+import com.example.nikolay_plyushchay_shop.data.SharedPreferencesBasketDao
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.BasketPresenter
 import com.example.nikolay_plyushchay_shop.presenter.BasketView
@@ -14,7 +14,7 @@ import moxy.ktx.moxyPresenter
 class BasketActivity : BaseActivity(), BasketView {
     private val presenter by moxyPresenter {
         BasketPresenter(
-            SharedPreferencesBasketProductDao(sharedPreferences)
+            SharedPreferencesBasketDao(sharedPreferences)
         )
     }
     private val adapter = BasketAdapter(

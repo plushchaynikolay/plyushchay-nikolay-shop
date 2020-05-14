@@ -6,7 +6,7 @@ import com.example.nikolay_plyushchay_shop.domain.BasketProductDao
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import com.google.gson.Gson
 
-class SharedPreferencesBasketProductDao(
+class SharedPreferencesBasketDao(
     private val sharedPreferences: SharedPreferences
 ) : BasketProductDao {
 
@@ -23,10 +23,20 @@ class SharedPreferencesBasketProductDao(
         }
 
     override fun getAllProducts(): List<Product> = savedProducts
+
     override fun addProduct(product: Product) {
         val products: List<Product> = savedProducts
         val newProducts = mutableListOf<Product>().apply {
             add(product)
+            addAll(products.filter { it.id != product.id })
+        }
+        savedProducts = newProducts
+    }
+
+    override fun removeProduct(product: Product) {
+        val products: List<Product> = savedProducts
+        val newProducts = mutableListOf<Product>().apply {
+            remove(product)
             addAll(products.filter { it.id != product.id })
         }
         savedProducts = newProducts

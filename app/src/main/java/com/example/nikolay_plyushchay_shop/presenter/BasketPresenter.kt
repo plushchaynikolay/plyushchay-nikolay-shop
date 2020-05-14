@@ -7,7 +7,7 @@ import moxy.InjectViewState
 
 @InjectViewState
 class BasketPresenter(
-    private val viewedProductDao: BasketProductDao
+    private val basketProductDao: BasketProductDao
 ) : BasePresenter<BasketView>() {
     private val basket = Basket(
         mutableListOf(
