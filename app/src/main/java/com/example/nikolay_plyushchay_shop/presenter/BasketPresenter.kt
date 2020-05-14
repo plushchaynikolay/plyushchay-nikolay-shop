@@ -4,13 +4,16 @@ import com.example.nikolay_plyushchay_shop.domain.BasketProductDao
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import moxy.InjectViewState
+import javax.inject.Inject
 
 @InjectViewState
-class BasketPresenter(
+class BasketPresenter @Inject constructor(
     private val basketProductDao: BasketProductDao
 ) : BasePresenter<BasketView>() {
     private val basket = Basket(basketProductDao.getAllProducts().toMutableList())
+
     fun setItems() = viewState.setItems(basket.products)
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         setItems()

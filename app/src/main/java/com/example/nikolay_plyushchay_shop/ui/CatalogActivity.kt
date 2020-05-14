@@ -15,17 +15,13 @@ import moxy.ktx.moxyPresenter
 import javax.inject.Inject
 
 class CatalogActivity : BaseActivity(), CatalogView {
-
     @Inject
     lateinit var catalogPresenter: CatalogPresenter
-
     private val presenter by moxyPresenter { catalogPresenter }
     private val adapter = CatalogAdapter(
         { openProductInfo(it) },
         { presenter.addProductToBasket(it) }
     )
-
-    override fun setItems(products: List<Product>) = adapter.setItems(products)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
@@ -43,6 +39,8 @@ class CatalogActivity : BaseActivity(), CatalogView {
     private fun openProductInfo(product: Product) = startActivity(
         Intent(this, ProductInfoActivity::class.java)
             .apply { putExtra(PRODUCT_TAG, product) })
+
+    override fun setItems(products: List<Product>) = adapter.setItems(products)
 
     override fun showInternetError() =
         Toast.makeText(this, "Проверьте подключение к интернету", Toast.LENGTH_LONG)
