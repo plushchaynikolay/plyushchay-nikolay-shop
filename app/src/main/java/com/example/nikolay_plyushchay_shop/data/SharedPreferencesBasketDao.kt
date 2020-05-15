@@ -27,8 +27,8 @@ class SharedPreferencesBasketDao(
     override fun addProduct(product: Product) {
         val products: List<Product> = savedProducts
         val newProducts = mutableListOf<Product>().apply {
+            addAll(products)
             add(product)
-            addAll(products.filter { it.id != product.id })
         }
         savedProducts = newProducts
     }
@@ -36,8 +36,8 @@ class SharedPreferencesBasketDao(
     override fun removeProduct(product: Product) {
         val products: List<Product> = savedProducts
         val newProducts = mutableListOf<Product>().apply {
-            remove(product)
-            addAll(products.filter { it.id != product.id })
+            addAll(products)
+            remove(this.last { it.id == product.id })
         }
         savedProducts = newProducts
     }
