@@ -7,15 +7,15 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 
 class DialogFragment(
-    private val message: String,
+    private val message: CharSequence,
     private val icon: Drawable,
-    private val buttonText: String,
+    private val buttonText: CharSequence,
     private val buttonFunction: () -> Unit
 ) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         AlertDialog.Builder(activity)
+            .setTitle(message)
             .setIcon(icon)
-            .setMessage(message)
             .setPositiveButton(buttonText)
             { _, _ -> buttonFunction() }
             .create()

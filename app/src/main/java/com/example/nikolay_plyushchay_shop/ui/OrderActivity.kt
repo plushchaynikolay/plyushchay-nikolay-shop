@@ -1,9 +1,9 @@
 package com.example.nikolay_plyushchay_shop.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import androidx.core.graphics.drawable.toDrawable
 import com.example.nikolay_plyushchay_shop.App
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.presenter.OrderPresenter
@@ -40,6 +40,7 @@ class OrderActivity : BaseActivity(), OrderView {
     override fun showErrorFatherName(visible: Boolean) = nameFatherField.showError(visible)
     override fun showErrorPhoneNumber(visible: Boolean) = phoneField.showError(visible)
 
+    @SuppressLint("ResourceType")
     private fun setListeners() {
         nameFirstField.addTextChangedListener(AfterTextChangedWatcher {
             presenter.setOrderFirstName(it.toString())
@@ -57,12 +58,16 @@ class OrderActivity : BaseActivity(), OrderView {
         buttonAcceptOrder.setOnClickListener {
             presenter.clearBasket()
             DialogFragment(
-                "Заказ успешно оформлен",
-                R.drawable.ic_done_24dp.toDrawable(),
-                "OK"
+                getText(R.string.orderSuccess),
+                getDrawable(R.drawable.ic_done_24dp)!!,
+                getText(R.string.OK)
             ) { finish() }
-                .show(supportFragmentManager, "dialog")
+                .show(supportFragmentManager, DIALOG_TAG)
         }
+    }
+
+    companion object {
+        private const val DIALOG_TAG = "DIALOG_TAG"
     }
 }
 
