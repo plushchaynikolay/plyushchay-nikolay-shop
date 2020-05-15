@@ -3,6 +3,7 @@ package com.example.nikolay_plyushchay_shop.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import androidx.core.graphics.drawable.toDrawable
 import com.example.nikolay_plyushchay_shop.App
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.presenter.OrderPresenter
@@ -53,7 +54,15 @@ class OrderActivity : BaseActivity(), OrderView {
             presenter.setOrderPhoneNumber(it.toString())
         })
         buttonOrderGoBack.setOnClickListener { finish() }
-        buttonAcceptOrder.setOnClickListener { presenter.clearBasket() }
+        buttonAcceptOrder.setOnClickListener {
+            presenter.clearBasket()
+            DialogFragment(
+                "Заказ успешно оформлен",
+                R.drawable.ic_done_24dp.toDrawable(),
+                "OK"
+            ) { finish() }
+                .show(supportFragmentManager, "dialog")
+        }
     }
 }
 

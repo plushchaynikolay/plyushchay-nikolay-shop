@@ -14,7 +14,10 @@ class OrderPresenter @Inject constructor(
     private val order = Order()
     private val basket: Basket = Basket(basketProductDao.getAllProducts().toMutableList())
 
-    fun clearBasket() = basket.products.forEach { basketProductDao.removeProduct(it) }
+    fun clearBasket() =
+        basket.products.forEach {
+            basketProductDao.removeProduct(it)
+        }
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
