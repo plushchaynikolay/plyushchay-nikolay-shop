@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/productView"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:contentDescription="@string/productViewDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_launcher_background" />
+
     <TextView
         android:id="@+id/productTvName"
         android:layout_width="0dp"
@@ -13,7 +23,7 @@
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/productTvOldPrice"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/productView"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Catalog Item Name" />
 
@@ -47,7 +57,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/addProductToBasket"
         android:padding="16dp"
-        android:src="@drawable/ic_shopping_cart_24dp"
+        android:src="@drawable/ic_add_shopping_cart_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -3,6 +3,7 @@
     <string name="app_name">МММ</string>
     <string name="app_full_name">Мой маленький магазинчик</string>
     <string name="backward">ᐊ</string>
+    <string name="productViewDescription">Информация о товаре</string>
     <!-- Каталог -->
     <string name="headerCatalog">@string/app_full_name</string>
     <string name="buttonBasket">Перейти в корзину</string>

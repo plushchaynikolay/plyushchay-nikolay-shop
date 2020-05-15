@@ -10,11 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.format
+import com.example.nikolay_plyushchay_shop.utils.drawImageFromUrl
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.product_item.*
 import kotlinx.android.synthetic.main.product_item.productTvName
 import kotlinx.android.synthetic.main.product_item.productTvOldPrice
 import kotlinx.android.synthetic.main.product_item.productTvPrice
 import kotlinx.android.synthetic.main.product_item_in_catalog.*
+import kotlinx.android.synthetic.main.product_item_in_catalog.productView
 
 class CatalogAdapter(
     private val openProductInfo: (Product) -> Unit,
@@ -45,6 +48,7 @@ class CatalogAdapter(
     ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(product: Product) {
             productTvName.text = product.name
+            drawImageFromUrl(productView, product.imageUrl)
             if (product.discount > 0) {
                 productTvOldPrice.text = format(product.price)
                 productTvOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
@@ -56,6 +60,7 @@ class CatalogAdapter(
                 productTvOldPrice.text = ""
                 productTvPrice.text = format(product.price)
             }
+            productView.setOnClickListener { openProductInfo(product) }
             productTvName.setOnClickListener { openProductInfo(product) }
             catalogAddIb.setOnClickListener { addProductToBasket(product) }
         }
