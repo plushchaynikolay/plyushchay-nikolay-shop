@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="productInfoMargin">20dp</dimen>
+    <dimen name="orderInfoMargin">5dp</dimen>
+    <dimen name="bitTextSize">18sp</dimen>
+    <dimen name="smallTextSize">14sp</dimen>
 </resources>

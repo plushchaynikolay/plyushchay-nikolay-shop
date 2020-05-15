@@ -34,6 +34,11 @@ class BasketActivity : BaseActivity(), BasketView {
         setListeners()
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        presenter.updateBasket()
+    }
+
     private fun setListeners() {
         buttonBasketGoBack.setOnClickListener { finish() }
         buttonMakeOrder.setOnClickListener { presenter.passBasketToOrder() }
@@ -43,10 +48,8 @@ class BasketActivity : BaseActivity(), BasketView {
         buttonMakeOrder.isEnabled = status
     }
 
-    override fun openBasketOrder(basket: Basket) {
-        startActivity(Intent(this, OrderActivity::class.java)
-            .apply { putExtra(OrderActivity.BASKET_TAG, basket) })
-    }
+    override fun openBasketOrder(basket: Basket) =
+        startActivity(Intent(this, OrderActivity::class.java))
 
     private fun openProductInfo(product: Product) {
         startActivity(Intent(this, ProductInfoActivity::class.java)

@@ -1,34 +1,36 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
+import com.example.nikolay_plyushchay_shop.domain.BasketProductDao
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.domain.model.Order
+import com.example.nikolay_plyushchay_shop.utils.format
 import moxy.InjectViewState
+import javax.inject.Inject
 
 @InjectViewState
-class OrderPresenter : BasePresenter<OrderView>() {
+class OrderPresenter @Inject constructor(
+    private val basketProductDao: BasketProductDao
+) : BasePresenter<OrderView>() {
     private val order = Order()
-    private lateinit var basket: Basket
+    private val basket: Basket = Basket(basketProductDao.getAllProducts().toMutableList())
 
-    fun setBasket(basket: Basket) {
-        this.basket = basket
-    }
+    fun clearBasket() = basket.products.forEach { basketProductDao.removeProduct(it) }
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        viewState.printTotal(performTotal())
+        printBasketInfo()
     }
 
-    private fun performTotal(): String {
-        var presentation = ""
-        basket.products.forEach { p ->
-            presentation += if (p.discount > 0) {
-                "${p.name}: ${format(p.price)}/${p.discount}% = ${format(p.discountPrice)}\n"
-            } else {
-                "${p.name}: = ${format(p.price)}\n"
-            }
-        }
-        presentation += format(basket.getDiscountPrice())
-        return presentation
+    private fun printBasketInfo() {
+        val totalPrice = basket.getDiscountPrice()
+        val totalDiscount = basket.getPrice() - totalPrice
+        viewState.printTotal(
+            format(basket.getDiscountPrice()),
+            basket.products.count().toString(),
+            if (totalDiscount > 0.0) {
+                format(totalDiscount)
+            } else null
+        )
     }
 
     fun setOrderFirstName(s: String) {

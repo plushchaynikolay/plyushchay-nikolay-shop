@@ -3,6 +3,7 @@
     <string name="app_name">МММ</string>
     <string name="app_full_name">Мой маленький магазинчик</string>
     <string name="backward">ᐊ</string>
+    <string name="productViewDescription">Информация о товаре</string>
     <!-- Каталог -->
     <string name="headerCatalog">@string/app_full_name</string>
     <string name="buttonBasket">Перейти в корзину</string>
@@ -20,6 +21,9 @@
     <string name="buttonDeleteItem">Удалить</string>
     <!-- Оформление заказа -->
     <string name="headerOrder">Оформление заказа</string>
+    <string name="totalPrice">Сумма заказа</string>
+    <string name="totalDiscount">Суммарная скидка</string>
+    <string name="totalCount">Единиц товара</string>
     <string name="nameFirstField">Имя</string>
     <string name="nameLastField">Фамилия</string>
     <string name="nameFatherField">Отчество</string>
