@@ -11,10 +11,6 @@
     <string name="addProductToBasket">Добавить</string>
     <!-- Информация о товаре -->
     <string name="headerProduct">Подробности</string>
-    <string name="productName">Название</string>
-    <string name="productPrice">Цена</string>
-    <string name="productDiscount">Скидка</string>
-    <string name="productPriceWithDiscount">Цена со скидкой</string>
     <string name="productImageTitle">Изображение товара</string>
     <!-- Информация о корзине -->
     <string name="headerBasket">Корзина</string>

@@ -169,7 +169,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/phoneField" />
 
             <RadioGroup
-                android:id="@+id/paymentGroup"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -179,13 +178,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/hintPhoneNumber">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/paymentCard" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/paymentCash" />
