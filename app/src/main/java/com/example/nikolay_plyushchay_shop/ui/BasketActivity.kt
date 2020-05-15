@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nikolay_plyushchay_shop.App
 import com.example.nikolay_plyushchay_shop.R
+import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.BasketPresenter
 import com.example.nikolay_plyushchay_shop.presenter.BasketView
@@ -35,9 +36,16 @@ class BasketActivity : BaseActivity(), BasketView {
 
     private fun setListeners() {
         buttonBasketGoBack.setOnClickListener { finish() }
-        buttonMakeOrder.setOnClickListener {
-            startActivity(Intent(this, OrderActivity::class.java))
-        }
+        buttonMakeOrder.setOnClickListener { presenter.passBasketToOrder() }
+    }
+
+    override fun setOrderBtnEnabledStatus(status: Boolean) {
+        buttonMakeOrder.isEnabled = status
+    }
+
+    override fun openBasketOrder(basket: Basket) {
+        startActivity(Intent(this, OrderActivity::class.java)
+            .apply { putExtra(OrderActivity.BASKET_TAG, basket) })
     }
 
     private fun openProductInfo(product: Product) {
