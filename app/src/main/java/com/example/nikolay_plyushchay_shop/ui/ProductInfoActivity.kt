@@ -4,7 +4,6 @@ import android.os.Bundle
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.ProductView
-import com.example.nikolay_plyushchay_shop.utils.format
 import com.example.nikolay_plyushchay_shop.utils.drawImageFromUrl
 import kotlinx.android.synthetic.main.activity_product_info.*
 
@@ -19,10 +18,7 @@ class ProductInfoActivity : BaseActivity(), ProductView {
 
     override fun setProductInfoLayout(product: Product) {
         drawImageFromUrl(ivImage, product.imageUrl)
-        tvName.text = product.name
-        tvPrice.text = format(product.price)
-        tvDiscount.text = product.discount.toString()
-        tvPriceWithDiscount.text = format(product.discountPrice)
+        productHeader.text = product.name
         tvDescription.text = product.description
     }
 
