@@ -3,6 +3,7 @@ package com.example.nikolay_plyushchay_shop.presenter
 import com.example.nikolay_plyushchay_shop.domain.BasketProductDao
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.domain.model.Order
+import com.example.nikolay_plyushchay_shop.utils.format
 import moxy.InjectViewState
 import javax.inject.Inject
 

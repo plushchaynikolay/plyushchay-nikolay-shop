@@ -1,11 +1,10 @@
 package com.example.nikolay_plyushchay_shop.ui
 
 import android.os.Bundle
-import com.bumptech.glide.Glide
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.ProductView
-import com.example.nikolay_plyushchay_shop.presenter.format
+import com.example.nikolay_plyushchay_shop.utils.format
 import com.example.nikolay_plyushchay_shop.utils.drawImageFromUrl
 import kotlinx.android.synthetic.main.activity_product_info.*
 

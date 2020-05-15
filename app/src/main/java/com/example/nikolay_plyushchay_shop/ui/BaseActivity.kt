@@ -1,10 +1,7 @@
 package com.example.nikolay_plyushchay_shop.ui
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import moxy.MvpAppCompatActivity
 
 abstract class BaseActivity : MvpAppCompatActivity() {
@@ -46,5 +43,3 @@ abstract class BaseActivity : MvpAppCompatActivity() {
     }
 }
 
-val AppCompatActivity.sharedPreferences: SharedPreferences
-    get() = getSharedPreferences("data", Context.MODE_PRIVATE)

@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.domain.model.Product
-import com.example.nikolay_plyushchay_shop.presenter.format
 import com.example.nikolay_plyushchay_shop.utils.drawImageFromUrl
+import com.example.nikolay_plyushchay_shop.utils.format
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.product_item.*
 

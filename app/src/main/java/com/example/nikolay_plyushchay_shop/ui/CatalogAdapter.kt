@@ -9,15 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.domain.model.Product
-import com.example.nikolay_plyushchay_shop.presenter.format
 import com.example.nikolay_plyushchay_shop.utils.drawImageFromUrl
+import com.example.nikolay_plyushchay_shop.utils.format
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.product_item.*
-import kotlinx.android.synthetic.main.product_item.productTvName
-import kotlinx.android.synthetic.main.product_item.productTvOldPrice
-import kotlinx.android.synthetic.main.product_item.productTvPrice
 import kotlinx.android.synthetic.main.product_item_in_catalog.*
-import kotlinx.android.synthetic.main.product_item_in_catalog.productView
 
 class CatalogAdapter(
     private val openProductInfo: (Product) -> Unit,

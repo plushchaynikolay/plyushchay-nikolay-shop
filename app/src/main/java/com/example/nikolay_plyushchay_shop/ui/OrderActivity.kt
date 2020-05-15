@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.EditText
 import com.example.nikolay_plyushchay_shop.App
 import com.example.nikolay_plyushchay_shop.R
-import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.presenter.OrderPresenter
 import com.example.nikolay_plyushchay_shop.presenter.OrderView
 import com.example.nikolay_plyushchay_shop.utils.AfterTextChangedWatcher
