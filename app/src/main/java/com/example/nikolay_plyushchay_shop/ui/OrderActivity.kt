@@ -1,5 +1,6 @@
 package com.example.nikolay_plyushchay_shop.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -39,6 +40,7 @@ class OrderActivity : BaseActivity(), OrderView {
     override fun showErrorFatherName(visible: Boolean) = nameFatherField.showError(visible)
     override fun showErrorPhoneNumber(visible: Boolean) = phoneField.showError(visible)
 
+    @SuppressLint("ResourceType")
     private fun setListeners() {
         nameFirstField.addTextChangedListener(AfterTextChangedWatcher {
             presenter.setOrderFirstName(it.toString())
@@ -53,7 +55,19 @@ class OrderActivity : BaseActivity(), OrderView {
             presenter.setOrderPhoneNumber(it.toString())
         })
         buttonOrderGoBack.setOnClickListener { finish() }
-        buttonAcceptOrder.setOnClickListener { presenter.clearBasket() }
+        buttonAcceptOrder.setOnClickListener {
+            presenter.clearBasket()
+            DialogFragment(
+                getText(R.string.orderSuccess),
+                getDrawable(R.drawable.ic_done_24dp)!!,
+                getText(R.string.OK)
+            ) { finish() }
+                .show(supportFragmentManager, DIALOG_TAG)
+        }
+    }
+
+    companion object {
+        private const val DIALOG_TAG = "DIALOG_TAG"
     }
 }
 
