@@ -15,6 +15,7 @@ class BasketPresenter @Inject constructor(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         setItems()
+        viewState.setOrderBtnEnabledStatus(basket.products.isNotEmpty())
     }
 
     fun setItems() = viewState.setItems(basket.products)
@@ -26,5 +27,6 @@ class BasketPresenter @Inject constructor(
         val position = basket.products.indexOf(product)
         basket.products.removeAt(position)
         viewState.removeItem(position)
+        viewState.setOrderBtnEnabledStatus(basket.products.isNotEmpty())
     }
 }

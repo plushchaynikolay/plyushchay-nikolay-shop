@@ -11,4 +11,5 @@ interface BasketView : MvpView {
     fun setItems(products: List<Product>)
     fun removeItem(position: Int)
     fun openBasketOrder(basket: Basket)
+    fun setOrderBtnEnabledStatus(status: Boolean)
 }

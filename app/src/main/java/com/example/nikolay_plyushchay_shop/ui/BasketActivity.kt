@@ -39,6 +39,10 @@ class BasketActivity : BaseActivity(), BasketView {
         buttonMakeOrder.setOnClickListener { presenter.passBasketToOrder() }
     }
 
+    override fun setOrderBtnEnabledStatus(status: Boolean) {
+        buttonMakeOrder.isEnabled = status
+    }
+
     override fun openBasketOrder(basket: Basket) {
         startActivity(Intent(this, OrderActivity::class.java)
             .apply { putExtra(OrderActivity.BASKET_TAG, basket) })
