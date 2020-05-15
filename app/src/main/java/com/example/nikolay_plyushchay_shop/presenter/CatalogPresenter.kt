@@ -1,5 +1,6 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
+import com.example.nikolay_plyushchay_shop.domain.BasketProductDao
 import com.example.nikolay_plyushchay_shop.domain.MainApi
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import kotlinx.coroutines.launch
@@ -10,7 +11,8 @@ import javax.inject.Inject
 
 @InjectViewState
 class CatalogPresenter @Inject constructor(
-    private val api: MainApi
+    private val api: MainApi,
+    private val basketProductDao: BasketProductDao
 ) : CoroutinePresenter<CatalogView>() {
     lateinit var products: List<Product>
 
@@ -43,4 +45,8 @@ class CatalogPresenter @Inject constructor(
         }
     }
 
+    fun addProductToBasket(product: Product) {
+        basketProductDao.addProduct(product)
+        viewState.showProductAdded()
+    }
 }

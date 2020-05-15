@@ -11,10 +11,14 @@ import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import com.example.nikolay_plyushchay_shop.presenter.format
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.product_item.*
+import kotlinx.android.synthetic.main.product_item.productTvName
+import kotlinx.android.synthetic.main.product_item.productTvOldPrice
+import kotlinx.android.synthetic.main.product_item.productTvPrice
+import kotlinx.android.synthetic.main.product_item_in_catalog.*
 
 class CatalogAdapter(
-    private val openProductInfo: (Product) -> Unit
+    private val openProductInfo: (Product) -> Unit,
+    private val addProductToBasket: (Product) -> Unit
 ) : RecyclerView.Adapter<CatalogAdapter.ViewHolder>() {
     private var catalogProducts: List<Product> = emptyList()
 
@@ -53,6 +57,7 @@ class CatalogAdapter(
                 productTvPrice.text = format(product.price)
             }
             productTvName.setOnClickListener { openProductInfo(product) }
+            catalogAddIb.setOnClickListener { addProductToBasket(product) }
         }
     }
 }

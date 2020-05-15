@@ -1,20 +1,16 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
-import com.example.nikolay_plyushchay_shop.domain.ViewedProductDao
+import com.example.nikolay_plyushchay_shop.domain.BasketProductDao
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.domain.model.Product
 import moxy.InjectViewState
+import javax.inject.Inject
 
 @InjectViewState
-class BasketPresenter(
-    private val viewedProductDao: ViewedProductDao
+class BasketPresenter @Inject constructor(
+    private val basketProductDao: BasketProductDao
 ) : BasePresenter<BasketView>() {
-    private val basket = Basket(
-        mutableListOf(
-            Product("Rainbow Dash", 100.0),
-            Product("Twilight Sparkle", 120.0, 15)
-        )
-    )
+    private val basket = Basket(basketProductDao.getAllProducts().toMutableList())
 
     fun setItems() = viewState.setItems(basket.products)
 
@@ -23,8 +19,8 @@ class BasketPresenter(
         setItems()
     }
 
-    fun removeItem(id: String) {
-        val product = basket.products.find { p -> p.id == id }
+    fun removeItem(product: Product) {
+        basketProductDao.removeProduct(product)
         val position = basket.products.indexOf(product)
         basket.products.removeAt(position)
         viewState.removeItem(position)
