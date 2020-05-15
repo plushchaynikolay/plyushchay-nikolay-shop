@@ -15,20 +15,19 @@ class OrderPresenter : BasePresenter<OrderView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        viewState.printTotal(performTotal())
+        printBasketInfo()
     }
 
-    private fun performTotal(): String {
-        var presentation = ""
-        basket.products.forEach { p ->
-            presentation += if (p.discount > 0) {
-                "${p.name}: ${format(p.price)}/${p.discount}% = ${format(p.discountPrice)}\n"
-            } else {
-                "${p.name}: = ${format(p.price)}\n"
-            }
-        }
-        presentation += format(basket.getDiscountPrice())
-        return presentation
+    private fun printBasketInfo() {
+        val totalPrice = basket.getDiscountPrice()
+        val totalDiscount = basket.getPrice() - totalPrice
+        viewState.printTotal(
+            format(basket.getDiscountPrice()),
+            basket.products.count().toString(),
+            if (totalDiscount > 0.0) {
+                format(totalDiscount)
+            } else null
+        )
     }
 
     fun setOrderFirstName(s: String) {

@@ -21,6 +21,9 @@
     <string name="buttonDeleteItem">Удалить</string>
     <!-- Оформление заказа -->
     <string name="headerOrder">Оформление заказа</string>
+    <string name="totalPrice">Сумма заказа</string>
+    <string name="totalDiscount">Суммарная скидка</string>
+    <string name="totalCount">Единиц товара</string>
     <string name="nameFirstField">Имя</string>
     <string name="nameLastField">Фамилия</string>
     <string name="nameFatherField">Отчество</string>

@@ -22,6 +22,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@id/buttonAcceptOrder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,15 +33,78 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textViewOrderInfo"
-                android:layout_width="match_parent"
+                android:id="@+id/textTotalPrice"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@android:color/secondary_text_light"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="@dimen/orderInfoMargin"
+                android:text="@string/totalPrice"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/bitTextSize"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textTotalPriceValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/orderInfoMargin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/bitTextSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textTotalPrice"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Информация о собранной корзине \n- цена без скидки,\n- размер скидки,\n- итоговая цена" />
+                tools:text="10000" />
+
+            <TextView
+                android:id="@+id/textTotalCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/orderInfoMargin"
+                android:text="@string/totalCount"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/smallTextSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTotalPrice" />
+
+            <TextView
+                android:id="@+id/textTotalCountValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/orderInfoMargin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/smallTextSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textTotalCount"
+                app:layout_constraintTop_toBottomOf="@+id/textTotalPrice"
+                tools:text="4" />
+
+            <TextView
+                android:id="@+id/textTotalDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/orderInfoMargin"
+                android:text="@string/totalDiscount"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/smallTextSize"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textTotalCount" />
+
+            <TextView
+                android:id="@+id/textTotalDiscountValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/orderInfoMargin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/smallTextSize"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textTotalDiscount"
+                app:layout_constraintTop_toBottomOf="@+id/textTotalCount"
+                tools:text="123" />
 
             <EditText
                 android:id="@+id/nameFirstField"
@@ -53,7 +117,7 @@
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewOrderInfo" />
+                app:layout_constraintTop_toBottomOf="@id/textTotalDiscount" />
 
             <EditText
                 android:id="@+id/nameLastField"
@@ -98,6 +162,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hintPhoneNumber"
+                android:textColor="@color/grayText"
+                android:textSize="@dimen/smallTextSize"
                 app:layout_constraintBottom_toBottomOf="@+id/phoneField"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phoneField" />

@@ -1,6 +1,7 @@
 package com.example.nikolay_plyushchay_shop.ui
 
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
@@ -13,8 +14,14 @@ import moxy.ktx.moxyPresenter
 class OrderActivity : BaseActivity(), OrderView {
     private val presenter by moxyPresenter { OrderPresenter() }
 
-    override fun printTotal(msg: String) {
-        textViewOrderInfo.text = msg
+    override fun printTotal(price: String, count: String, discount: String?) {
+        textTotalPriceValue.text = price
+        textTotalCountValue.text = count
+        if (discount != null) {
+            textTotalDiscount.visibility = View.VISIBLE
+            textTotalDiscountValue.visibility = View.VISIBLE
+            textTotalDiscountValue.text = discount
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
