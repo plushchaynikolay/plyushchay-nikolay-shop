@@ -3,6 +3,7 @@ package com.example.nikolay_plyushchay_shop.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import com.example.nikolay_plyushchay_shop.App
 import com.example.nikolay_plyushchay_shop.R
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.presenter.OrderPresenter
@@ -10,9 +11,12 @@ import com.example.nikolay_plyushchay_shop.presenter.OrderView
 import com.example.nikolay_plyushchay_shop.utils.AfterTextChangedWatcher
 import kotlinx.android.synthetic.main.activity_order.*
 import moxy.ktx.moxyPresenter
+import javax.inject.Inject
 
 class OrderActivity : BaseActivity(), OrderView {
-    private val presenter by moxyPresenter { OrderPresenter() }
+    @Inject
+    lateinit var orderPresenter: OrderPresenter
+    private val presenter by moxyPresenter { orderPresenter }
 
     override fun printTotal(price: String, count: String, discount: String?) {
         textTotalPriceValue.text = price
@@ -25,10 +29,9 @@ class OrderActivity : BaseActivity(), OrderView {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
-        val basket = intent?.getParcelableExtra(BASKET_TAG) ?: Basket(mutableListOf())
-        presenter.setBasket(basket)
         setListeners()
     }
 
@@ -51,12 +54,8 @@ class OrderActivity : BaseActivity(), OrderView {
             presenter.setOrderPhoneNumber(it.toString())
         })
         buttonOrderGoBack.setOnClickListener { finish() }
+        buttonAcceptOrder.setOnClickListener { presenter.clearBasket() }
     }
-
-    companion object {
-        const val BASKET_TAG = "BASKET_TAG"
-    }
-
 }
 
 fun EditText.showError(visible: Boolean) {

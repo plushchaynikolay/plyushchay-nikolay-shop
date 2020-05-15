@@ -10,15 +10,22 @@ import javax.inject.Inject
 class BasketPresenter @Inject constructor(
     private val basketProductDao: BasketProductDao
 ) : BasePresenter<BasketView>() {
-    private val basket = Basket(basketProductDao.getAllProducts().toMutableList())
+    private var basket = Basket(basketProductDao.getAllProducts().toMutableList())
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         setItems()
-        viewState.setOrderBtnEnabledStatus(basket.products.isNotEmpty())
     }
 
-    fun setItems() = viewState.setItems(basket.products)
+    fun updateBasket() {
+        this.basket = Basket(basketProductDao.getAllProducts().toMutableList())
+        setItems()
+    }
+
+    fun setItems() {
+        viewState.setOrderBtnEnabledStatus(basket.products.isNotEmpty())
+        viewState.setItems(basket.products)
+    }
 
     fun passBasketToOrder() = viewState.openBasketOrder(basket)
 

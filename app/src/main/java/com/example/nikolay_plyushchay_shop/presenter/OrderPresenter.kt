@@ -1,17 +1,19 @@
 package com.example.nikolay_plyushchay_shop.presenter
 
+import com.example.nikolay_plyushchay_shop.domain.BasketProductDao
 import com.example.nikolay_plyushchay_shop.domain.model.Basket
 import com.example.nikolay_plyushchay_shop.domain.model.Order
 import moxy.InjectViewState
+import javax.inject.Inject
 
 @InjectViewState
-class OrderPresenter : BasePresenter<OrderView>() {
+class OrderPresenter @Inject constructor(
+    private val basketProductDao: BasketProductDao
+) : BasePresenter<OrderView>() {
     private val order = Order()
-    private lateinit var basket: Basket
+    private val basket: Basket = Basket(basketProductDao.getAllProducts().toMutableList())
 
-    fun setBasket(basket: Basket) {
-        this.basket = basket
-    }
+    fun clearBasket() = basket.products.forEach { basketProductDao.removeProduct(it) }
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
